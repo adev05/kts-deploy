@@ -1,0 +1,18 @@
+@use "@styles/variables" as *;
+
+.search {
+  --l-columns: 1fr auto;
+
+  display: grid;
+  grid-template-columns: var(--l-columns);
+  align-items: center;
+  gap: $space-m;
+
+  &__button {
+    min-width: 180px;
+  }
+
+  @include tablet {
+    --l-columns: 1fr;
+  }
+}

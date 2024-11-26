@@ -1,0 +1,17 @@
+@use "@styles/variables" as *;
+
+.main {
+  --l-margin-y: 64px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: $space-m;
+  text-align: center;
+  margin: var(--l-margin-y) auto;
+
+  @include tablet {
+    --l-margin-y: 32px;
+  }
+}

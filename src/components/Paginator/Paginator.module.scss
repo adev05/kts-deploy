@@ -1,0 +1,13 @@
+@use "@styles/variables" as *;
+
+.paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-xxs;
+  margin-top: $space-xl;
+
+  &-item {
+    list-style-type: none;
+  }
+}

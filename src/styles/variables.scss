@@ -1,0 +1,101 @@
+$border-radius: 12px;
+
+$brand: #0070ff;
+$brand-hover: #2b7fff;
+$brand-active: #0070ff;
+
+$space-xxl: 28px;
+$space-xl: 24px;
+$space-l: 20px;
+$space-m: 16px;
+$space-s: 14px;
+$space-xs: 12px;
+$space-xxs: 8px;
+
+$loader-bg: $brand;
+$button-primary-bg: $brand;
+$button-primary-text: #fff;
+$button-primary-bg-hover: $brand-hover;
+$button-primary-text-hover: #fff;
+$button-primary-bg-disabled: #d9d9d9;
+$button-primary-text-disabled: #fff;
+$button-primary-bg-active: $brand-active;
+$button-primary-text-active: #fff;
+$button-secondary-bg: #edf6ff;
+$button-secondary-text: $brand;
+
+$text-primary: #000;
+$text-secondary: #afadb5;
+$text-accent: $brand;
+
+$input-text: #000;
+$input-bg: #fff;
+$input-placeholder: rgba(15, 23, 42, 0.4);
+$input-border: #dce3eb;
+$input-bg-focus: #fff;
+$input-border-focus: $brand;
+$input-text-focus: #000;
+$input-bg-disabled: #fff;
+$input-border-disabled: #fff;
+$input-text-disabled: rgba(#000, 0.2);
+
+$checkbox-bg: #fff;
+$checkbox-border: #fff;
+$checkbox-bg-hover: #fff;
+$checkbox-border-hover: $brand;
+$checkbox-bg-disabled: rgba(#fff, 0.5);
+$checkbox-border-disabled: transparent;
+$checkbox-check: $brand;
+$checkbox-check-hover: $brand;
+$checkbox-check-disabled: rgba(#000, 0.2);
+
+$card-bg: #fff;
+$card-image-bg: #fff;
+$card-border: #dce3eb;
+$card-border-radius: 16px;
+
+$shadow: 0px 4px 10px 0px rgba(#000, 0.25);
+
+$icon-primary: #000;
+$icon-secondary: #afadb5;
+$icon-accent: $brand;
+
+$dropdown-options-bg: #fff;
+
+$skeleton-background: #f8f8f8;
+
+$mobile: 480px;
+$tablet: 768px;
+$desktop-s: 1024px;
+$desktop-m: 1200px;
+$desktop-l: 1440px;
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin desktop-s {
+    @media (max-width: $desktop-s) {
+        @content;
+    }
+}
+
+@mixin desktop-m {
+    @media (max-width: $desktop-m) {
+        @content;
+    }
+}
+
+@mixin desktop-l {
+    @media (max-width: $desktop-l) {
+        @content;
+    }
+}

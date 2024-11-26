@@ -1,0 +1,72 @@
+@use "@styles/variables" as *;
+
+.input {
+  --l-input-text: #{$input-text};
+  --l-input-bg: #{$input-bg};
+  --l-input-border: #{$input-border};
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: $space-xs $space-s;
+  background: var(--l-input-bg);
+  border-radius: $border-radius;
+  box-shadow: inset 0 0 0 1px var(--l-input-border);
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    background-color 200ms ease;
+
+  &__field {
+    padding: 0;
+    display: block;
+    flex-grow: 1;
+    height: 100%;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    appearance: none;
+    border: none;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--l-input-text);
+    transition: color 200ms ease;
+    background: none;
+    height: 24px;
+
+    &::placeholder {
+      transition: color 200ms ease;
+      color: $input-placeholder;
+      opacity: 1;
+    }
+
+    &:hover:not(:focus) {
+      &::placeholder {
+        color: #768694;
+      }
+    }
+  }
+
+  &:hover {
+    --l-input-border: #ccd5df;
+  }
+
+  &:focus-within {
+    --l-input-text: #{$input-text-focus};
+    --l-input-bg: #{$input-bg-focus};
+    --l-input-border: #{$input-border-focus};
+  }
+
+  &_disabled {
+    pointer-events: none;
+    --l-input-text: #{$input-text-disabled};
+    --l-input-bg: #{$input-bg-disabled};
+    --l-input-border: #{$input-border-disabled};
+  }
+
+  &__after {
+    display: flex;
+    flex-shrink: 0;
+    margin-left: $space-xxs;
+  }
+}

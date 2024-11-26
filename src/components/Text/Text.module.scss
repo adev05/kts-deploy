@@ -1,0 +1,119 @@
+@use "@styles/variables" as *;
+
+.text {
+  // Desktop (default)
+  --l-title-font-size: 44px;
+  --l-p-20-font-size: 20px;
+  --l-p-18-font-size: 18px;
+  --l-p-16-font-size: 16px;
+  --l-p-14-font-size: 14px;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+
+  &_view {
+    &-button {
+      font-size: 18px;
+      line-height: 18px;
+    }
+
+    &-title {
+      font-size: var(--l-title-font-size);
+      line-height: 130%;
+      font-weight: 700;
+    }
+
+    &-p-20 {
+      font-size: var(--l-p-20-font-size);
+      line-height: 130%;
+    }
+
+    &-p-18 {
+      font-size: var(--l-p-18-font-size);
+      line-height: 130%;
+    }
+
+    &-p-16 {
+      font-size: var(--l-p-16-font-size);
+      line-height: 130%;
+    }
+
+    &-p-14 {
+      font-size: var(--l-p-14-font-size);
+      line-height: 130%;
+    }
+  }
+
+  &_weight {
+    &-normal {
+      font-weight: 400;
+    }
+
+    &-medium {
+      font-weight: 500;
+    }
+
+    &-semibold {
+      font-weight: 600;
+    }
+
+    &-bold {
+      font-weight: 700;
+    }
+  }
+
+  &_color {
+    &-primary {
+      color: $text-primary;
+    }
+
+    &-secondary {
+      color: $text-secondary;
+    }
+
+    &-accent {
+      color: $text-accent;
+    }
+  }
+
+  &_multi-ellipsis {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+  }
+
+  // Desktop small
+  @include desktop-s {
+    --l-title-font-size: 40px;
+    --l-p-20-font-size: 18px;
+    --l-p-18-font-size: 16px;
+    --l-p-16-font-size: 14px;
+    --l-p-14-font-size: 12px;
+  }
+
+  // Tablet
+  @include tablet {
+    --l-title-font-size: 36px;
+    --l-p-20-font-size: 18px;
+    --l-p-18-font-size: 16px;
+    --l-p-16-font-size: 14px;
+    --l-p-14-font-size: 12px;
+  }
+
+  // Mobile
+  @include mobile {
+    --l-title-font-size: 32px;
+    --l-p-20-font-size: 16px;
+    --l-p-18-font-size: 14px;
+    --l-p-16-font-size: 13px;
+    --l-p-14-font-size: 12px;
+
+    &_view {
+      &-button {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+  }
+}

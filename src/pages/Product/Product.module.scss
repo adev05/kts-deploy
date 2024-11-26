@@ -1,0 +1,15 @@
+@use "@styles/variables" as *;
+
+.product {
+  --l-padding: 16px;
+  --l-container-columns: 1fr;
+  --l-button-columns: 1fr;
+
+  padding: var(--l-padding);
+
+  @media (min-width: 768px) {
+    --l-padding: 48px;
+    --l-container-columns: calc(100% / 3) 1fr;
+    --l-button-columns: repeat(2, 1fr);
+  }
+}
