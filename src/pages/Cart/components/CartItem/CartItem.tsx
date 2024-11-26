@@ -5,52 +5,71 @@ import Button from '@components/Button';
 import s from './CartItem.module.scss';
 import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
+import imageNotFound from '@assets/images/image-not-found.svg';
 
 interface CartItemProps {
-    item: CartItemType;
-    onUpdateQuantity: (quantity: number) => void;
-    onRemove: () => void;
+  item: CartItemType;
+  onUpdateQuantity: (quantity: number) => void;
+  onRemove: () => void;
 }
 
 const CartItem: React.FC<CartItemProps> = observer(({ item, onUpdateQuantity, onRemove }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const productId = React.useMemo(() => item.id, [item.id]);
+  const productId = React.useMemo(() => item.id, [item.id]);
+  const [imageSrc, setImageSrc] = React.useState(item.image);
 
-    const handleProductClick = React.useCallback(() => {
-        navigate(`/product/${productId}`);
-    }, [navigate, productId]);
+  const handleProductClick = React.useCallback(() => {
+    navigate(`/product/${productId}`);
+  }, [navigate, productId]);
 
-    return (
-        <div className={s.item}>
-            <img src={item.image} alt={item.title} className={s.item__image} onClick={handleProductClick} />
-            <div className={s.item__content}>
-                <Text view="p-20" tag="h3">{item.title}</Text>
-                <Text view="p-20" tag="span" weight="bold">${item.price * item.quantity}</Text>
-                <div className={s.item__actions}>
-                    <div className={s.item__quantity}>
-                        <Button
-                            variant="secondary"
-                            onClick={() => onUpdateQuantity(item.quantity - 1)}
-                            disabled={item.quantity <= 1}
-                        >
-                            -
-                        </Button>
-                        <Text view="p-20" tag="span">{item.quantity}</Text>
-                        <Button
-                            variant="secondary"
-                            onClick={() => onUpdateQuantity(item.quantity + 1)}
-                            disabled={item.quantity >= 10}
-                        >
-                            +
-                        </Button>
-                    </div>
+  const handleError = () => {
+    setImageSrc(imageNotFound);
+  };
 
-                </div>
-                <Button variant="secondary" onClick={onRemove}>Remove</Button>
-            </div>
+  return (
+    <div className={s.item}>
+      <img
+        src={imageSrc}
+        alt={item.title}
+        className={s.item__image}
+        onClick={handleProductClick}
+        onError={handleError}
+      />
+      <div className={s.item__content}>
+        <Text view="p-20" tag="h3">
+          {item.title}
+        </Text>
+        <Text view="p-20" tag="span" weight="bold">
+          ${item.price * item.quantity}
+        </Text>
+        <div className={s.item__actions}>
+          <div className={s.item__quantity}>
+            <Button
+              variant="secondary"
+              onClick={() => onUpdateQuantity(item.quantity - 1)}
+              disabled={item.quantity <= 1}
+            >
+              -
+            </Button>
+            <Text view="p-20" tag="span">
+              {item.quantity}
+            </Text>
+            <Button
+              variant="secondary"
+              onClick={() => onUpdateQuantity(item.quantity + 1)}
+              disabled={item.quantity >= 10}
+            >
+              +
+            </Button>
+          </div>
         </div>
-    );
+        <Button variant="secondary" onClick={onRemove}>
+          Remove
+        </Button>
+      </div>
+    </div>
+  );
 });
 
 export default CartItem;
