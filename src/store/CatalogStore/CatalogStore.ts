@@ -10,9 +10,7 @@ import {
   linearizeCollection,
   normalizeCollection,
 } from '@store/models/shared/collection';
-type PrivateFields =
-  | '_list'
-  | '_meta';
+type PrivateFields = '_list' | '_meta';
 
 export default class CatalogStore {
   private _list: CollectionModel<number, ProductItem> = getInitialCollectionModel();
@@ -39,7 +37,6 @@ export default class CatalogStore {
   }
 
   async getProducts(search?: string | null, categoryId?: string | null, offset?: number) {
-    console.log('getProducts called!', this._meta);
     if (this._meta === Meta.loading) return;
     this._meta = Meta.loading;
 

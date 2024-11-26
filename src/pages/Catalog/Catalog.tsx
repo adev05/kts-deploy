@@ -14,8 +14,6 @@ import { useSearchParams } from 'react-router-dom';
 import PaginatorStore from '@store/PaginatorStore';
 
 const Catalog: React.FC = observer(() => {
-  console.log('[Render]: Catalog');
-
   const catalogStore = React.useMemo(() => new CatalogStore(), []);
   const categoryStore = React.useMemo(() => new CategoryStore(), []);
   const searchStore = React.useMemo(() => new SearchStore(), []);
@@ -24,10 +22,13 @@ const Catalog: React.FC = observer(() => {
   const [searchParams] = useSearchParams();
   const searchQuery = React.useMemo(() => searchParams.get(SEARCH) || '', [searchParams]);
 
-  React.useEffect(action(() => {
-    catalogStore.getProducts(searchQuery, categoryStore.categoryId, paginatorStore.offset);
-    paginatorStore.getLength(searchQuery, categoryStore.categoryId);
-  }), [searchQuery, categoryStore.categoryId, paginatorStore.currentPage]);
+  React.useEffect(
+    action(() => {
+      catalogStore.getProducts(searchQuery, categoryStore.categoryId, paginatorStore.offset);
+      paginatorStore.getLength(searchQuery, categoryStore.categoryId);
+    }),
+    [searchQuery, categoryStore.categoryId, paginatorStore.currentPage],
+  );
 
   return (
     <div className={s.catalog}>

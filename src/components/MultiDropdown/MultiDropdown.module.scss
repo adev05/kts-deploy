@@ -8,6 +8,10 @@
   position: relative;
   width: 100%;
 
+  &__field * {
+    cursor: default;
+  }
+
   &__options {
     position: absolute;
     left: 0;

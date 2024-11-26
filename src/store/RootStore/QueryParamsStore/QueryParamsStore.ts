@@ -20,7 +20,6 @@ export default class QueryParamsStore {
   }
 
   get params(): qs.ParsedQs {
-    console.log('get params:', this._params);
     return this._params;
   }
 
@@ -30,7 +29,6 @@ export default class QueryParamsStore {
     if (this._search !== search) {
       this._search = search;
       this._params = qs.parse(search);
-      console.log('setSearch queryParamsStore:', this._search, this._params);
     }
   }
 }

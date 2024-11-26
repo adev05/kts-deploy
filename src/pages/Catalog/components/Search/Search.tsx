@@ -12,11 +12,14 @@ const Search: React.FC<{ searchStore: SearchStore }> = observer(({ searchStore }
   const [searchParams, setSearchParams] = useSearchParams();
   const searchValue = React.useMemo(() => searchParams.get(SEARCH) || '', [searchParams]);
 
-  React.useEffect(action(() => {
-    if (searchStore.search !== searchValue) {
-      searchStore.setSearch(searchValue);
-    }
-  }), [searchValue, searchStore]);
+  React.useEffect(
+    action(() => {
+      if (searchStore.search !== searchValue) {
+        searchStore.setSearch(searchValue);
+      }
+    }),
+    [searchValue, searchStore],
+  );
 
   const handleSubmit = React.useCallback(
     action((e: React.FormEvent) => {
@@ -30,10 +33,8 @@ const Search: React.FC<{ searchStore: SearchStore }> = observer(({ searchStore }
       searchParams.delete(PAGE);
       setSearchParams(searchParams);
     }),
-    [searchStore, searchParams, setSearchParams]
+    [searchStore, searchParams, setSearchParams],
   );
-
-  console.log('[Render]: Search');
 
   return (
     <form className={s.search} onSubmit={handleSubmit}>

@@ -9,7 +9,11 @@
 
   @media (min-width: 768px) {
     --l-padding: 48px;
-    --l-container-columns: calc(100% / 3) 1fr;
+
     --l-button-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    --l-container-columns: calc(100% / 3) 1fr;
   }
 }

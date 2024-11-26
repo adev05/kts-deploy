@@ -2,11 +2,24 @@
 
 .related-products {
   margin-top: $space-xl;
+  --l-columns-count: 2;
 
   &__cards {
     display: grid;
     margin-top: $space-xl;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(var(--l-columns-count), 1fr);
     gap: $space-m;
+  }
+
+  @media (min-width: 768px) {
+    --l-columns-count: 2;
+  }
+
+  @media (min-width: 1024px) {
+    --l-columns-count: 3;
+  }
+
+  @media (min-width: 1280px) {
+    --l-columns-count: 4;
   }
 }

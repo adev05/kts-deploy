@@ -76,7 +76,6 @@ export default class CategoryStore {
       return;
     }
     this._meta = Meta.loading;
-    console.log('getCategories called!', this._meta);
     try {
       const response = await axios({
         url: `${apiUrls.withBaseUrl(apiUrls.categories.list())}`,

@@ -100,6 +100,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ className, options, value
         value={opened ? filter : isEmpty ? '' : title}
         onChange={setFilter}
         afterSlot={<ArrowDownIcon color="secondary" />}
+        readOnly
       />
       {opened && (
         <div className={s['multi-dropdown__options']}>

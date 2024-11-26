@@ -70,7 +70,6 @@ export default class ProductStore {
       runInAction(() => {
         if (response.status === 200) {
           this._product = normalizeProductItem(response.data);
-          console.log('normalizedProduct:', this._product);
           this._categoryId = this._product.category.id;
           this._meta = Meta.success;
           this.getRelatedProducts();
@@ -88,9 +87,7 @@ export default class ProductStore {
 
   async getRelatedProducts() {
     if (this._meta === Meta.loading || !this._categoryId) return;
-
     this._meta = Meta.loading;
-    console.log('getRelatedProducts called!', this._meta);
 
     try {
       const response = await axios({
@@ -107,7 +104,6 @@ export default class ProductStore {
           this._relatedProducts = response.data
             .filter((product: ProductItem) => product.id !== this._productId)
             .slice(0, 4);
-          console.log(this._relatedProducts);
           this._meta = Meta.success;
         } else {
           this._meta = Meta.error;
@@ -115,7 +111,6 @@ export default class ProductStore {
       });
     } catch (error) {
       this._meta = Meta.error;
-      console.log(error);
     }
   }
 }

@@ -13,8 +13,6 @@ const Filter: React.FC<{ categoryStore: CategoryStore }> = observer(({ categoryS
   const value = toJS(categoryStore.included);
   const getTitle = (options: Option[]) => (options.length === 0 ? 'Filter' : options[0].value);
 
-  console.log('[Render]: Filter');
-
   React.useEffect(
     action(() => {
       categoryStore.getCategories();
@@ -36,17 +34,20 @@ const Filter: React.FC<{ categoryStore: CategoryStore }> = observer(({ categoryS
     [searchParams, categoryStore.options, categoryStore.setCategoryId, categoryStore.setIncluded],
   );
 
-  const handleFilterChange = React.useCallback((selectedOption: Option[]) => {
-    if (selectedOption.length > 0) {
-      searchParams.set(CATEGORY_ID, selectedOption[0].key);
-      searchParams.delete(PAGE);
-    } else {
-      searchParams.delete(CATEGORY_ID);
-    }
-    setSearchParams(searchParams);
-    categoryStore.setIncluded(selectedOption);
-    categoryStore.setCategoryId(selectedOption.length > 0 ? selectedOption[0].key : null);
-  }, [searchParams, categoryStore, setSearchParams]);
+  const handleFilterChange = React.useCallback(
+    (selectedOption: Option[]) => {
+      if (selectedOption.length > 0) {
+        searchParams.set(CATEGORY_ID, selectedOption[0].key);
+        searchParams.delete(PAGE);
+      } else {
+        searchParams.delete(CATEGORY_ID);
+      }
+      setSearchParams(searchParams);
+      categoryStore.setIncluded(selectedOption);
+      categoryStore.setCategoryId(selectedOption.length > 0 ? selectedOption[0].key : null);
+    },
+    [searchParams, categoryStore, setSearchParams],
+  );
 
   return (
     <MultiDropdown
