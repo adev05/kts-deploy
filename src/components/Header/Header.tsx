@@ -1,7 +1,6 @@
 import Logotype from '../Logotype';
 import Navbar from '../Navbar';
 import s from './Header.module.scss';
-import HeartIcon from '../Icons/HeartIcon';
 import React from 'react';
 import CartIcon from '@pages/Cart/components/CartIcon/CartIcon';
 import Bars3Icon from '@components/Icons/Bars3Icon';

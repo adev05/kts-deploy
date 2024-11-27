@@ -2,7 +2,6 @@ import React from 'react';
 import s from './ProductDetails.module.scss';
 import Text from '@components/Text';
 import Button from '@components/Button';
-import imageNotFound from '@assets/images/image-not-found.svg';
 import AddToCartButton from '@components/AddToCartButton';
 import ImageCarousel from '@components/ImageCarousel';
 

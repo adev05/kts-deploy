@@ -23,16 +23,7 @@ export type CardProps = {
   actionSlot?: React.ReactNode;
 };
 
-const Card: React.FC<CardProps> = ({
-  className,
-  images,
-  captionSlot,
-  title,
-  subtitle,
-  contentSlot,
-  actionSlot,
-  onClick,
-}) => {
+const Card: React.FC<CardProps> = ({ className, images, captionSlot, title, subtitle, actionSlot, onClick }) => {
   return (
     <div className={cn(s.card, className)} onClick={onClick}>
       <div className={s.card__header}>

@@ -109,7 +109,7 @@ export default class ProductStore {
           this._meta = Meta.error;
         }
       });
-    } catch (error) {
+    } catch {
       this._meta = Meta.error;
     }
   }
