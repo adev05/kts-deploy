@@ -12,57 +12,49 @@ import s from './Categories.module.scss';
 const categoryStore = new CategoryStore();
 
 const Categories: React.FC = observer(() => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        categoryStore.getCategories();
-    }, []);
+  useEffect(() => {
+    categoryStore.getCategories();
+  }, []);
 
-    const handleCategoryClick = (category: CategoryItem) => {
-        const searchParams = new URLSearchParams();
-        searchParams.set(CATEGORY_ID, String(category.id));
-        navigate({
-            pathname: routerUrls.catalog.create(),
-            search: searchParams.toString()
-        });
-    };
+  const handleCategoryClick = (category: CategoryItem) => {
+    const searchParams = new URLSearchParams();
+    searchParams.set(CATEGORY_ID, String(category.id));
+    navigate({
+      pathname: routerUrls.catalog.create(),
+      search: searchParams.toString(),
+    });
+  };
 
-    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-        e.currentTarget.src = imageNotFound;
-    };
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = imageNotFound;
+  };
 
-    return (
-        <div className={s.categories}>
-            <Text view="title" tag="h1" className={s.categories__title}>
-                Категории
-            </Text>
-            <div className={s.categories__grid}>
-                {categoryStore.list.map((category) => (
-                    <div
-                        key={category.id}
-                        className={s.categories__item}
-                        onClick={() => handleCategoryClick(category)}
-                    >
-                        <div className={s.categories__imageWrapper}>
-                            <img
-                                src={category.image}
-                                alt={category.name}
-                                className={s.categories__image}
-                                onError={handleImageError}
-                            />
-                        </div>
-                        <Text
-                            view="p-18"
-                            tag="h2"
-                            className={s.categories__name}
-                        >
-                            {category.name}
-                        </Text>
-                    </div>
-                ))}
+  return (
+    <div className={s.categories}>
+      <Text view="title" tag="h1" className={s.categories__title}>
+        Категории
+      </Text>
+      <div className={s.categories__grid}>
+        {categoryStore.list.map((category) => (
+          <div key={category.id} className={s.categories__item} onClick={() => handleCategoryClick(category)}>
+            <div className={s.categories__imageWrapper}>
+              <img
+                src={category.image}
+                alt={category.name}
+                className={s.categories__image}
+                onError={handleImageError}
+              />
             </div>
-        </div>
-    );
+            <Text view="p-18" tag="h2" className={s.categories__name}>
+              {category.name}
+            </Text>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 });
 
 export default Categories;

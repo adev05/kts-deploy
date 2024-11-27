@@ -22,7 +22,14 @@ const RelatedProducts: React.FC<{ products: ProductItem[] }> = ({ products }) =>
               title={product.title}
               subtitle={product.description}
               contentSlot={`$${product.price}`}
-              actionSlot={<AddToCartButton id={product.id} price={product.price} title={product.title} image={product.images[0]} />}
+              actionSlot={
+                <AddToCartButton
+                  id={product.id}
+                  price={product.price}
+                  title={product.title}
+                  image={product.images[0]}
+                />
+              }
             />
           </Link>
         ))}

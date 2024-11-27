@@ -12,7 +12,7 @@ interface AddToCartButtonProps {
 }
 
 const AddToCartButton: React.FC<AddToCartButtonProps> = observer(({ id, price, title, image }) => {
-  const cartItem = cartStore.items.find(item => item.id === id);
+  const cartItem = cartStore.items.find((item) => item.id === id);
   const quantity = cartItem?.quantity || 0;
 
   const handleAdd = (e: React.MouseEvent) => {
@@ -39,11 +39,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = observer(({ id, price, t
 
   return quantity > 0 ? (
     <div className={s['button-container']}>
-      <Button
-        className={s.button}
-        onClick={handleRemove}
-        variant="secondary"
-      >
+      <Button className={s.button} onClick={handleRemove} variant="secondary">
         -
       </Button>
       <Button
@@ -56,19 +52,12 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = observer(({ id, price, t
       >
         {quantity} x {price}$
       </Button>
-      <Button
-        className={s.button}
-        onClick={handleIncrease}
-        variant="secondary"
-      >
+      <Button className={s.button} onClick={handleIncrease} variant="secondary">
         +
       </Button>
     </div>
   ) : (
-    <Button
-      className={s['button-full']}
-      onClick={handleAdd}
-    >
+    <Button className={s['button-full']} onClick={handleAdd}>
       {price}$
     </Button>
   );

@@ -20,10 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             tag="p"
             view="p-18"
             color={location.pathname === item.path ? 'accent' : 'primary'}
-            className={cn(
-              s.navbar__item,
-              location.pathname === item.path && s.navbar__item_active
-            )}
+            className={cn(s.navbar__item, location.pathname === item.path && s.navbar__item_active)}
           >
             {item.name}
           </Text>
