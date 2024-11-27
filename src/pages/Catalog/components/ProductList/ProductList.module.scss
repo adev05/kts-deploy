@@ -3,6 +3,7 @@
 .product-list {
   margin-top: $space-xl;
   --l-columns-count: 2;
+  --l-gap: 16px;
 
   &__title {
     display: flex;
@@ -16,11 +17,12 @@
     display: grid;
     grid-template-columns: repeat(var(--l-columns-count), 1fr);
     justify-content: space-between;
-    gap: 32px;
+    gap: var(--l-gap);
   }
 
   @media (min-width: 768px) {
     --l-columns-count: 2;
+    --l-gap: 32px;
   }
 
   @media (min-width: 1024px) {
